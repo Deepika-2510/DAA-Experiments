@@ -1,0 +1,217 @@
+#include <stdio.h>
+#include <math.h>
+
+
+float eg1(int i);
+//(3/2)^i function
+float eg2(int i);     
+// i cube function
+int eg3(int i);    
+// i(linear) function
+float eg4(int i); 
+// 2^i function
+double eg5(double i);
+//logi function
+int eg6(int i);     
+//2^2^i+1 function
+double eg7(double i);   
+//i*logi function
+double eg8(double i);    
+//log(log(i)) function
+double eg9(double i);   
+//2^logi function
+double eg10(double i);   
+//i^log(log(i)) function
+double fact(int i);       
+//Factorial function
+
+float eg1(int i)
+{
+return pow(1.5,i);
+}
+
+float eg2(int i)
+{
+return i*i*i;}
+
+int eg3(int i)
+{
+return i;
+}
+
+float eg4(int i)
+{
+return pow(2,i);
+}
+
+double eg5(double i)
+{
+return (log(i))/log(2);
+}
+
+int eg6(int i)
+{
+return pow(2,pow(2,i+1));
+}
+
+double eg7(double i)
+{
+return i*(log(i));
+}
+
+double eg8(double i)
+{
+return log(log(i));
+}
+
+double eg9(double i)
+{
+return pow(2,log(i));
+}
+
+double eg10(double i)
+{
+return pow(i,log(log(i)));
+}
+
+double fact(int i)
+{
+   if(i==0 || i==1)
+   {
+     return 1;
+   }
+   
+   else
+   {
+     return i*fact(i-1);
+   }
+}
+
+
+
+
+int main()
+{
+int i;
+float answer;
+int choice;
+
+do
+{
+printf("\nEnter 1 for (3/2)^n function\nEnter 2 for n^3(cubic) function\nEnter 3 for linear function\nEnter 4 for 2^i function\nEnter 5 for log(i) function\nEnter 6 for 2^2^i+1 function\nEnter 7 for ilogi function\nEnter 8 for log of logi function\nEnter 9 for 2^logi function\nEnter 10 for i^loglogi function\nEnter 11 for factorial function\nEnter 12 for exit\n" );
+scanf("%d",&choice);
+
+
+switch(choice)
+{
+
+ case 1:
+        
+ for(int i=0;i<=100;i+=10)
+ {
+   answer=eg1(i);
+   printf("%d\t%0.2f\n",i,answer);
+ }
+ break;
+
+ case 2:
+ 
+ for(int i=0;i<=100;i+=10)
+ {
+   answer=eg2(i);
+   printf("%d\t%0.2f\n",i,answer);
+ }
+ break;
+
+ case 3:
+ 
+ for(int i=0;i<=100;i+=10)
+ {
+   answer=eg3(i);
+   printf("%d\t%0.2f\n",i,answer);
+ }
+ break;
+
+ case 4:
+ 
+ for(int i=0;i<=100;i+=10)
+ {
+   answer=eg4(i);
+   printf("%d\t%0.2f\n",i,answer);
+ }
+ break;
+
+ case 5:
+ 
+ for(int i=0;i<=100;i+=10)
+ {
+   answer=eg5(i);
+   printf("%d\t%0.2f\n",i,answer);
+ }
+ break;
+
+ case 6:
+ 
+ for(int i=0;i<=100;i+=10)
+ {
+   answer=eg6(i);
+   printf("%d\t%0.2f\n",i,answer);
+ }
+ break;
+
+ case 7:
+ 
+ for(int i=0;i<=100;i+=10)
+ {
+   answer=eg7(i);
+   printf("%d\t%0.2f\n",i,answer);
+ }
+ break;
+
+ case 8:
+ 
+ for(int i=0;i<=100;i+=10)
+ {
+   answer=eg8(i);
+   printf("%d\t%0.2f\n",i,answer);
+ }
+ break;
+
+ case 9:
+ 
+ for(int i=0;i<=100;i+=10)
+ {
+   answer=eg9(i);
+   printf("%d\t%0.2f\n",i,answer);
+ }
+ break;
+
+ case 10:
+ 
+ for(int i=0;i<=100;i+=10)
+ {
+   answer=eg10(i);
+   printf("%d\t%0.2f\n",i,answer);
+ }
+ break;
+
+ case 11:
+ 
+ for(int j=0;j<=20;j+=2)
+ {
+   answer=fact(j);
+   printf("%d\t%0.2f\n",j,answer);
+ }
+ break;
+
+ default: 
+ printf("Thank you!");
+ break;
+ 
+}
+    
+}
+while(choice!=0);
+return 0;
+
+}
