@@ -1,104 +1,34 @@
-/*
+// A Naive recursive implementation of LCS problem
 
-    C code of two 2 by 2 matrix multiplication using Strassen's algorithm
+#include<stdio.h>
+#include<string.h>
+int max(int a, int b);
 
-    */
+// Returns length of LCS for X[0..m-1], Y[0..n-1]
+int lcs(char* X, char* Y, int m, int n)
+{
+	if (m == 0 || n == 0)
+		return 0;
+	if (X[m - 1] == Y[n - 1])
+		return 1 + lcs(X, Y, m - 1, n - 1);
+	else
+		return max(lcs(X, Y, m, n - 1),
+				lcs(X, Y, m - 1, n));
+}
 
-    #include<stdio.h>
+// Utility function to get max of 2 integers
+int max(int a, int b) { return (a > b) ? a : b; }
 
-    int main(){
+// Driver code
+int main()
+{
+	char S1[] = "DEEPIKA";
+	char S2[] = "RIYA";
+	int m = strlen(S1);
+	int n = strlen(S2);
 
-      int a[2][2], b[2][2], c[2][2], i, j;
+	printf("Length of LCS is %d", lcs(S1, S2, m, n));
 
-      int m1, m2, m3, m4 , m5, m6, m7;
+	return 0;
+}
 
-     
-
-      printf("Enter the 4 elements of first matrix: ");
-
-      for(i = 0;i < 2; i++)
-
-          for(j = 0;j < 2; j++)
-
-               scanf("%d", &a[i][j]);
-      printf("Enter the 4 elements of second matrix: ");
-
-      for(i = 0; i < 2; i++)
-
-          for(j = 0;j < 2; j++)
-
-               scanf("%d", &b[i][j]);
-
-     
-
-      printf("\nThe first matrix is\n");
-
-      for(i = 0; i < 2; i++){
-
-          printf("\n");
-
-          for(j = 0; j < 2; j++)
-
-               printf("%d\t", a[i][j]);
-
-      }
-
-     
-
-      printf("\nThe second matrix is\n");
-
-      for(i = 0;i < 2; i++){
-
-          printf("\n");
-
-          for(j = 0;j < 2; j++)
-
-               printf("%d\t", b[i][j]);
-
-      }
-
-     
-
-      m1= (a[0][0] + a[1][1]) * (b[0][0] + b[1][1]);
-
-      m2= (a[1][0] + a[1][1]) * b[0][0];
-
-      m3= a[0][0] * (b[0][1] - b[1][1]);
-
-      m4= a[1][1] * (b[1][0] - b[0][0]);
-
-      m5= (a[0][0] + a[0][1]) * b[1][1];
-
-      m6= (a[1][0] - a[0][0]) * (b[0][0]+b[0][1]);
-
-      m7= (a[0][1] - a[1][1]) * (b[1][0]+b[1][1]);
-
-     
-
-      c[0][0] = m1 + m4- m5 + m7;
-
-      c[0][1] = m3 + m5;
-
-      c[1][0] = m2 + m4;
-
-      c[1][1] = m1 - m2 + m3 + m6;
-
-     
-
-       printf("\nAfter multiplication using Strassen's algorithm \n");
-
-       for(i = 0; i < 2 ; i++){
-
-          printf("\n");
-
-          for(j = 0;j < 2; j++)
-
-               printf("%d\t", c[i][j]);
-
-       }
-
-     
-
-       return 0;
-
-    }
